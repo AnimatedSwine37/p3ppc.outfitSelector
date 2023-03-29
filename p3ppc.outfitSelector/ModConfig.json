@@ -1,0 +1,25 @@
+{
+  "ModId": "p3ppc.outfitSelector",
+  "ModName": "Outfit Selector",
+  "ModAuthor": "AnimatedSwine37",
+  "ModVersion": "1.0.0",
+  "ModDescription": "Lets you select your party member's outfits separately from the armour they are wearing",
+  "ModDll": "p3ppc.outfitSelector.dll",
+  "ModIcon": "Preview.png",
+  "ModR2RManagedDll32": "x86/p3ppc.outfitSelector.dll",
+  "ModR2RManagedDll64": "x64/p3ppc.outfitSelector.dll",
+  "ModNativeDll32": "",
+  "ModNativeDll64": "",
+  "IsLibrary": false,
+  "ReleaseMetadataFileName": "p3ppc.outfitSelector.ReleaseMetadata.json",
+  "PluginData": {},
+  "IsUniversalMod": false,
+  "ModDependencies": [
+    "p5rpc.modloader",
+    "Reloaded.Memory.SigScan.ReloadedII",
+    "reloaded.sharedlib.hooks"
+  ],
+  "OptionalDependencies": [],
+  "SupportedAppId": ["p3p.exe"],
+  "ProjectUrl": ""
+}
