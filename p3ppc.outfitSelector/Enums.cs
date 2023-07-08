@@ -8,6 +8,15 @@ namespace p3ppc.outfitSelector
 {
     public class Enums
     {
+        public enum EquipmentType
+        {
+            Weapon = 0,
+            Body = 1,
+            Feet = 2,
+            Accessory = 3,
+            Outfit = 4,
+        }
+
         public enum PartyMember
         {
             MaleProtag = 1,
@@ -68,7 +77,7 @@ namespace p3ppc.outfitSelector
         {
             Default = -1,
             Swimsuit = 0,
-            Sumer = 1,
+            Summer = 1,
             Winter = 2,
             Shirt_Of_Chivalry = 5,
             Butler = 6

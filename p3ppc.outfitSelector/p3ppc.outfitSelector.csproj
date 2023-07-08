@@ -27,6 +27,7 @@
   <Import Project="Reloaded.Checks.targets" />
 
   <ItemGroup>
+    <None Remove="Enums.cs~RF20c98efa.TMP" />
     <None Remove="ModConfig.json" />
     <None Remove="Publish.ps1" />
     <None Remove="BuildLinked.ps1" />
@@ -38,6 +39,12 @@
     <Content Include="ModConfig.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Update="FEmulator\PAK\init_free.bin\init\itemtbl.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="ItemNames.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Preview.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
