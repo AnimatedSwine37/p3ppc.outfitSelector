@@ -412,134 +412,182 @@
 [msg boots_089]
 [s]Santa outfit for Yukari.[n][e]
 
-[msg boots_09A]
+[msg boots_08A]
 [s]Aigis Default[n][e]
 
-[msg boots_09B]
+[msg boots_08B]
 [s]Uniform for Aigis.[n][e]
 
-[msg boots_09C]
+[msg boots_08C]
 [s]A one-piece dress for Aigis.[n][e]
 
-[msg boots_09D]
+[msg boots_08D]
 [s]Maid outfit for Aigis.[n][e]
 
-[msg boots_09E]
+[msg boots_08E]
 [s]Santa outfit for Aigis.[n][e]
 
-[msg boots_09F]
+[msg boots_08F]
 [s]Uniform for Mitsuru.[n][e]
 
-[msg boots_0A0]
+[msg boots_090]
 [s]Summer uniform for Mitsuru.[n][e]
 
-[msg boots_0A1]
+[msg boots_091]
 [s]Winter uniform for Mitsuru.[n][e]
 
-[msg boots_0A2]
+[msg boots_092]
 [s]A bathing suit for Mitsuru.[n][e]
 
-[msg boots_0A3]
+[msg boots_093]
 [s]Maid outfit for Mitsuru.[n][e]
 
-[msg boots_0A4]
+[msg boots_094]
 [s]Armor that looks like a bikini.[n][e]
 
-[msg boots_0A5]
+[msg boots_095]
 [s]Santa outfit for Mitsuru.[n][e]
 
-[msg boots_0A6]
+[msg boots_096]
 [s]Uniform for Junpei.[n][e]
 
-[msg boots_0A7]
+[msg boots_097]
 [s]Summer uniform for Junpei.[n][e]
 
-[msg boots_0A8]
+[msg boots_098]
 [s]Winter uniform for Junpei.[n][e]
 
-[msg boots_0A9]
+[msg boots_099]
 [s]A bathing suit for Junpei.[n][e]
 
-[msg boots_0AA]
+[msg boots_09A]
 [s]Butler outfit for Junpei.[n][e]
 
-[msg boots_0AB]
+[msg boots_09B]
 [s]A traditional Japanese[n]shirt for men.[n][e]
 
-[msg boots_0AC]
+[msg boots_09C]
 [s]Uniform for Akihiko.[n][e]
 
-[msg boots_0AD]
+[msg boots_09D]
 [s]Summer uniform for Akihiko.[n][e]
 
-[msg boots_0AE]
+[msg boots_09E]
 [s]Winter uniform for Akihiko.[n][e]
 
-[msg boots_0AF]
+[msg boots_09F]
 [s]A bathing suit for Akihiko.[n][e]
 
-[msg boots_0B0]
+[msg boots_0A0]
 [s]Butler outfit for Akihiko.[n][e]
 
-[msg boots_0B1]
+[msg boots_0A1]
 [s]A traditional Japanese[n]shirt for men.[n][e]
 
-[msg boots_0B2]
+[msg boots_0A2]
 [s]Uniform for Ken.[n][e]
 
-[msg boots_0B3]
+[msg boots_0A3]
 [s]Summer uniform for Ken.[n][e]
 
-[msg boots_0B4]
+[msg boots_0A4]
 [s]Winter uniform for Ken.[n][e]
 
-[msg boots_0B5]
+[msg boots_0A5]
 [s]A bathing suit for Ken.[n][e]
 
-[msg boots_0B6]
+[msg boots_0A6]
 [s]Butler outfit for Ken.[n][e]
 
-[msg boots_0B7]
+[msg boots_0A7]
 [s]A traditional Japanese[n]shirt for men.[n][e]
 
-[msg boots_0B8]
+[msg boots_0A8]
 [s]Uniform for Shinjiro.[n][e]
 
-[msg boots_0B9]
+[msg boots_0A9]
 [s]Butler outfit for Shinjiro.[n][e]
 
-[msg boots_0BA]
+[msg boots_0AA]
 [s]A traditional Japanese[n]shirt for men.[n][e]
 
-[msg boots_0BB]
+[msg boots_0AB]
 [s]Koromaru default.[n][e]
 
-[msg boots_0BC]
+[msg boots_0AC]
 [s]Butler outfit for Koromaru...?[n][e]
 
-[msg boots_0BD]
+[msg boots_0AD]
 [s]Uniform for [f 4 2].[n][e]
 
-[msg boots_0BE]
+[msg boots_0AE]
 [s]Summer uniform for [f 4 2].[n][e]
 
-[msg boots_0BF]
+[msg boots_0AF]
 [s]Winter uniform for [f 4 2].[n][e]
 
-[msg boots_0C0]
+[msg boots_0B0]
 [s]Winter uniform for [f 4 2][n]without the SEES band.[n][e]
 
-[msg boots_0C1]
+[msg boots_0B1]
 [s]A bathing suit for [f 4 2].[n][e]
 
-[msg boots_0C2]
+[msg boots_0B2]
 [s]Maid outfit for [f 4 2].[n][e]
 
-[msg boots_0C3]
+[msg boots_0B3]
 [s]Armor that looks like a bikini.[n][e]
 
-[msg boots_0C4]
+[msg boots_0B4]
 [s]Santa outfit for [f 4 2].[n][e]
+
+[msg boots_0B5]
+[s]0x0B5[n][e]
+
+[msg boots_0B6]
+[s]0x0B6[n][e]
+
+[msg boots_0B7]
+[s]0x0B7[n][e]
+
+[msg boots_0B8]
+[s]0x0B8[n][e]
+
+[msg boots_0B9]
+[s]0x0B9[n][e]
+
+[msg boots_0BA]
+[s]0x0BA[n][e]
+
+[msg boots_0BB]
+[s]0x0BB[n][e]
+
+[msg boots_0BC]
+[s]0x0BC[n][e]
+
+[msg boots_0BD]
+[s]0x0BD[n][e]
+
+[msg boots_0BE]
+[s]0x0BE[n][e]
+
+[msg boots_0BF]
+[s]0x0BF[n][e]
+
+[msg boots_0C0]
+[s]0x0C0[n][e]
+
+[msg boots_0C1]
+[s]0x0C1[n][e]
+
+[msg boots_0C2]
+[s]0x0C2[n][e]
+
+[msg boots_0C3]
+[s]0x0C3[n][e]
+
+[msg boots_0C4]
+[s]0x0C4[n][e]
 
 [msg boots_0C5]
 [s]0x0C5[n][e]
