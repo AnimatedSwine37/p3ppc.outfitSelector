@@ -5,6 +5,7 @@ using Reloaded.Memory.SigScan.ReloadedII.Interfaces;
 using Reloaded.Memory.Sources;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -18,12 +19,20 @@ internal unsafe class SelectionMenu
     private IHook<GetCharacterEquipmentDelegate> _getEquipmentHook;
     private IHook<SetCharacterEquipmentDelegate> _setEquipmentHook;
     private IHook<GetEquipmentTypeDelegate> _getEquipmentTypeHook;
+    private IHook<SetupEquipMenuInfoDelegate> _setupEquipMenuInfoHook;
+    private GetSpriteFromSprDelegate _getSpriteFromSpr;
     private SetItemNumDelegate _setItemNum;
+    private LoadCampFileDelegate _loadCampFile;
     private PartyMemberInfo* _partyInfo;
     internal bool* IsFemc;
+    private TextureStruct** _outfitIcon;
+    private TextureStruct** _outfitText;
 
     internal void Hook(IReloadedHooks hooks, IMemory memory)
     {
+        //Debugger.Launch();
+        _outfitIcon = (TextureStruct**)memory.Allocate(8);
+        _outfitText = (TextureStruct**)memory.Allocate(8);
         Utils.SigScan("48 8B 8C ?? ?? ?? ?? ?? 44 89 84 24 ?? ?? ?? ??", "RenderEquipTypeName", address =>
         {
             string[] function =
@@ -83,6 +92,16 @@ internal unsafe class SelectionMenu
             _setItemNum = hooks.CreateWrapper<SetItemNumDelegate>(address, out _);
         });
 
+        Utils.SigScan("48 89 5C 24 ?? 57 48 83 EC 20 48 8B D9 8B FA 48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 8B 15 ?? ?? ?? ??", "GetSpriteFromSpr", address =>
+        {
+            _getSpriteFromSpr = hooks.CreateWrapper<GetSpriteFromSprDelegate>(address, out _);
+        });
+
+        Utils.SigScan("40 53 48 83 EC 20 48 8B D9 48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 4C 8B 0D ?? ?? ?? ?? 4D 85 C9 74 ?? 49 8D 41 ??", "LoadCampFile", address =>
+        {
+            _loadCampFile = hooks.CreateWrapper<LoadCampFileDelegate>(address, out _);
+        });
+
         Utils.SigScan("83 F8 01 0F 85 ?? ?? ?? ?? 0F BF CD", "ChangeCharacterOutfit", address =>
         {
             // Make it check for a change in outfit instead of body
@@ -103,6 +122,58 @@ internal unsafe class SelectionMenu
             IsFemc = (bool*)Utils.GetGlobalAddress(address - 4);
             Utils.LogDebug($"Found IsFemc at 0x{(nuint)IsFemc:X}");
         });
+
+        Utils.SigScan("48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 48 89 7C 24 ?? 41 54 41 56 41 57 48 83 EC 20 48 8B F1 48 8D 0D ?? ?? ?? ??", "SetupEquipMenuInfo", address =>
+        {
+            _setupEquipMenuInfoHook = hooks.CreateHook<SetupEquipMenuInfoDelegate>(SetupEquipMenuInfo, address).Activate();
+        });
+
+        // Change outfit icon
+        Utils.SigScan("E8 ?? ?? ?? ?? 41 0F B7 D6 41 0F B7 CC", "EquipMenuTopOutfitIcon", address =>
+        {
+            string[] function =
+            {
+                "use64",
+                "cmp r14, 4",
+                "jne endHook",
+                $"mov rcx, [qword {(nuint)_outfitIcon}]",
+                "label endHook"
+            };
+            _hooks.Add(hooks.CreateAsmHook(function, address, AsmHookBehaviour.ExecuteFirst).Activate());
+        });
+
+        Utils.SigScan("E9 ?? ?? ?? ?? 41 0F B7 CC", "EquipMenuOutfitStuff", address =>
+        {
+            string[] function =
+            {
+                "use64",
+                "cmp r13, 892", // boots with id greater than 892 (125 in the group) are considered outfits
+                "jle endHook",
+                "mov byte [rsp+0x74], 4", // change type 
+                $"mov r14, [qword {(nuint)_outfitIcon}]", // change icon
+                "label endHook"
+            };
+            _hooks.Add(hooks.CreateAsmHook(function, address - 3, AsmHookBehaviour.ExecuteFirst).Activate());
+        });
+
+        Utils.SigScan("E8 ?? ?? ?? ?? F3 0F 10 3D ?? ?? ?? ?? 33 D2 F3 44 0F 10 25 ?? ?? ?? ??", "EquipMenuOutfitText", address =>
+        {
+            string[] function =
+            {
+                "use64",
+                "cmp rbp, 4",
+                "jne endHook",
+                $"mov rcx, [qword {(nuint)_outfitText}]", // change icon
+                "label endHook"
+            };
+            _hooks.Add(hooks.CreateAsmHook(function, address, AsmHookBehaviour.ExecuteFirst).Activate());
+        });
+
+        Utils.SigScan("66 41 83 FC 03 74 ??", "EquipMenuOutfitIcon", address =>
+        {
+            memory.SafeWriteRaw((nuint)address + 5, new byte[] { 0x7D }); // Change JE to JGE
+        });
+
     }
 
     internal short GetCharacterEquipment(PartyMember character, EquipmentType type)
@@ -151,6 +222,14 @@ internal unsafe class SelectionMenu
         return item;
     }
 
+    private void SetupEquipMenuInfo(EquipMenuInfo* info)
+    {
+        _setupEquipMenuInfoHook.OriginalFunction(info);
+        var sprFile = _loadCampFile("c_main_01.spr");
+        *_outfitIcon = _getSpriteFromSpr(sprFile, 696);
+        *_outfitText = _getSpriteFromSpr(sprFile, 697);
+    }
+
     private readonly short[] _defaultItems = new short[]
     {
         893, // MC
@@ -176,6 +255,18 @@ internal unsafe class SelectionMenu
         short unk; // Make it the right size
     }
 
+    [StructLayout(LayoutKind.Explicit)]
+    private struct EquipMenuInfo
+    {
+
+    }
+
+    [StructLayout(LayoutKind.Explicit)]
+    internal struct TextureStruct
+    {
+
+    }
+
     [Function(CallingConventions.Microsoft)]
     private delegate byte SetItemNumDelegate(short item, byte num);
 
@@ -187,4 +278,13 @@ internal unsafe class SelectionMenu
 
     [Function(CallingConventions.Microsoft)]
     private delegate void SetCharacterEquipmentDelegate(PartyMember character, EquipmentType type, short item);
+
+    [Function(CallingConventions.Microsoft)]
+    private delegate void SetupEquipMenuInfoDelegate(EquipMenuInfo* info);
+
+    [Function(CallingConventions.Microsoft)]
+    private delegate TextureStruct* GetSpriteFromSprDelegate(nuint spr, int spriteIndex);
+
+    [Function(CallingConventions.Microsoft)]
+    private delegate nuint LoadCampFileDelegate(string file);
 }
