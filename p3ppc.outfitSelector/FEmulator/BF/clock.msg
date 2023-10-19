@@ -1,0 +1,10 @@
+[sel CLOCK_SEL]
+[s]Save[e]
+[s]Heal party[e]
+[s]Heal all[e]
+[s]Check battle tips[e]
+[s]Give all outfits[e]
+[s]Cancel[e]
+
+[msg GaveOutfits]
+[s]Gave you all the outfits,[n]enjoy![n][w][e]

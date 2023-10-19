@@ -1,19 +1,19 @@
 [
     {
         "Id": 893,
-        "English": "School Uniform"
+        "English": "SEES Uniform"
     },
     {
         "Id": 894,
-        "English": "Plain School Uniform"
+        "English": "School Uniform"
     },
     {
         "Id": 895,
-        "English": "Summer Outfit"
+        "English": "Summer Clothes"
     },
     {
         "Id": 896,
-        "English": "Winter Outfit"
+        "English": "Winter Clothes"
     },
     {
         "Id": 897,
@@ -21,24 +21,24 @@
     },
     {
         "Id": 898,
-        "English": "Swimsuit"
+        "English": "Blue Swim Trunks"
     },
 
     {
         "Id": 899,
-        "English": "School Uniform"
+        "English": "SEES Uniform"
     },
     {
         "Id": 900,
-        "English": "Summer Outfit"
+        "English": "Summer Clothes"
     },
     {
         "Id": 901,
-        "English": "Winter Outfit"
+        "English": "Winter Clothes"
     },
     {
         "Id": 902,
-        "English": "Swimsuit"
+        "English": "Trim Bikini"
     },
     {
         "Id": 903,
@@ -46,7 +46,7 @@
     },
     {
         "Id": 904,
-        "English": "High Cut"
+        "English": "High-Cut Armor"
     },
     {
         "Id": 905,
@@ -55,7 +55,7 @@
 
     {
         "Id": 906,
-        "English": "Aigis Default"
+        "English": "Aigis Classic"
     },
     {
         "Id": 907,
@@ -76,19 +76,19 @@
 
     {
         "Id": 911,
-        "English": "School Uniform"
+        "English": "SEES Uniform"
     },
     {
         "Id": 912,
-        "English": "Summer Outfit"
+        "English": "Summer Clothes"
     },
     {
         "Id": 913,
-        "English": "Winter Outfit"
+        "English": "Winter Clothes"
     },
     {
         "Id": 914,
-        "English": "Swimsuit"
+        "English": "Elegant Bikini"
     },
     {
         "Id": 915,
@@ -96,7 +96,7 @@
     },
     {
         "Id": 916,
-        "English": "High Cut"
+        "English": "High-Cut Armor"
     },
     {
         "Id": 917,
@@ -105,19 +105,19 @@
 
     {
         "Id": 918,
-        "English": "School Uniform"
+        "English": "SEES Uniform"
     },
     {
         "Id": 919,
-        "English": "Summer Outfit"
+        "English": "Summer Clothes"
     },
     {
         "Id": 920,
-        "English": "Winter Outfit"
+        "English": "Winter Clothes"
     },
     {
         "Id": 921,
-        "English": "Swimsuit"
+        "English": "Bermuda Shorts"
     },
     {
         "Id": 922,
@@ -130,19 +130,19 @@
 
     {
         "Id": 924,
-        "English": "School Uniform"
+        "English": "SEES Uniform"
     },
     {
         "Id": 925,
-        "English": "Summer Outfit"
+        "English": "Summer Clothes"
     },
     {
         "Id": 926,
-        "English": "Winter Outfit"
+        "English": "Winter Clothes"
     },
     {
         "Id": 927,
-        "English": "Swimsuit"
+        "English": "Speedy Briefs"
     },
     {
         "Id": 928,
@@ -155,81 +155,73 @@
 
     {
         "Id": 930,
-        "English": "School Uniform"
+        "English": "SEES Uniform"
     },
     {
         "Id": 931,
-        "English": "Summer Outfit"
+        "English": "Summer Clothes"
     },
     {
         "Id": 932,
-        "English": "Winter Outfit"
+        "English": "Winter Clothes"
     },
     {
         "Id": 933,
-        "English": "Swimsuit"
+        "English": "Butler Outfit"
     },
     {
         "Id": 934,
-        "English": "Butler Outfit"
-    },
-    {
-        "Id": 935,
         "English": "Shirt Of Chivalry"
     },
 
     {
+        "Id": 935,
+        "English": "SEES Uniform"
+    },
+    {
         "Id": 936,
-        "English": "School Uniform"
+        "English": "Butler Outfit"
     },
     {
         "Id": 937,
-        "English": "Butler Outfit"
-    },
-    {
-        "Id": 938,
         "English": "Shirt Of Chivalry"
     },
 
     {
-        "Id": 939,
-        "English": "Koromaru Default"
+        "Id": 938,
+        "English": "Koromaru Classic"
     },
     {
-        "Id": 940,
+        "Id": 939,
         "English": "Butler Outfit"
     },
 
     {
+        "Id": 940,
+        "English": "SEES Uniform"
+    },
+    {
         "Id": 941,
-        "English": "School Uniform"
+        "English": "Summer Clothes"
     },
     {
         "Id": 942,
-        "English": "Summer Outfit"
+        "English": "Winter Clothes"
     },
     {
         "Id": 943,
-        "English": "Winter Outfit"
+        "English": "School Uniform"
     },
     {
         "Id": 944,
-        "English": "Plain Winter Outfit"
+        "English": "Pink Bikini"
     },
     {
         "Id": 945,
-        "English": "Swimsuit"
-    },
-    {
-        "Id": 946,
         "English": "Maid Outfit"
     },
     {
-        "Id": 947,
-        "English": "High Cut"
-    },
-    {
-        "Id": 948,
-        "English": "Christmas Outfit"
+        "Id": 946,
+        "English": "High-Cut Armor"
     }
 ]

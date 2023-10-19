@@ -1,0 +1,54 @@
+import("Clock.msg");
+
+void HIT_SCRIPT_255_hook()
+{
+    int var7;
+    MSG_WND_DSP();
+    MSG( WHAT_DO_YOU_WANT );
+    SEL_DEFKEY( 14, 4 );
+    var7 = SEL( CLOCK_SEL );
+    
+    if ( var7 == 0 )
+    {
+        MSG_WND_CLS();
+        FADE( 1, 10 );
+        FUNCTION_000F();
+        SAVE_MENU();
+        FUNCTION_000D( 0 );
+        FUNCTION_000F();
+        return;
+    }
+    else if ( var7 == 1 )
+    {
+        heal_point_pt();
+    }
+    else if ( var7 == 2 )
+    {
+        heal_point_all();
+    }
+    else if ( var7 == 3 )
+    {
+        system_tutorial();
+    }
+    else if (var7 == 4 )
+    {
+
+        give_outfits();
+        MSG( GaveOutfits );
+        return;
+    }
+    else 
+    {
+        MSG_WND_CLS();
+        return;
+    }
+
+}
+
+void give_outfits()
+{
+    for(int i = 893; i < 947; i++)
+    {
+        SET_ITEM_NUM(i, 1);
+    }
+}

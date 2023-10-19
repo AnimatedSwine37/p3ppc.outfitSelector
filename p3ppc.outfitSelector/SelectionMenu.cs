@@ -240,9 +240,9 @@ internal unsafe class SelectionMenu
         1, // Fuuka (not used)
         924, // Akihiko
         930, // Ken
-        936, // Shinjiro
-        939, // Koromaru
-        941, // FeMC
+        935, // Shinjiro
+        938, // Koromaru
+        940, // FeMC
     };
 
     [StructLayout(LayoutKind.Explicit)]
