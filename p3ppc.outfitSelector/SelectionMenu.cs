@@ -197,6 +197,22 @@ internal unsafe class SelectionMenu
             // There's a duplicate arrow drawn on the main equip menu
             memory.SafeWriteRaw((nuint)address, new byte[] { 0x90, 0x90, 0x90, 0x90, 0x90 });
         });
+
+        Utils.SigScan("84 C0 74 ?? 41 0F BF C6", "SetupItemMenuItems", address =>
+        {
+            string[] function =
+            {
+                "use64",
+                "cmp r8, 892",
+                "jle endHook",
+                "cmp r8, 1024",
+                "jge endHook",
+                "mov al, 0", // If the item id is between 892 and 1024 it's an outfit, so set quantity to 0 to hide from item menu
+                "label endHook"
+            };
+            _hooks.Add(hooks.CreateAsmHook(function, address, AsmHookBehaviour.ExecuteFirst).Activate());
+        });
+
     }
 
     internal short GetCharacterEquipment(PartyMember character, EquipmentType type)
