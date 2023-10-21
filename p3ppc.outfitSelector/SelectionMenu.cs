@@ -27,6 +27,7 @@ internal unsafe class SelectionMenu
     internal bool* IsFemc;
     private TextureStruct** _outfitIcon;
     private TextureStruct** _outfitText;
+    private float* _arrowYPos;
 
     internal void Hook(IReloadedHooks hooks, IMemory memory)
     {
@@ -174,6 +175,28 @@ internal unsafe class SelectionMenu
             memory.SafeWriteRaw((nuint)address + 5, new byte[] { 0x7D }); // Change JE to JGE
         });
 
+        Utils.SigScan("41 83 E8 05 46 0F B6 8C ?? ?? ?? ?? ??", "EquipMenuDescriptionPos", address =>
+        {
+            memory.SafeWriteRaw((nuint)address, new byte[] { 0x90, 0x90, 0x90, 0x90 }); // nop out the sub 5 (so it's 5 lower)
+        });
+
+        Utils.SigScan("E8 ?? ?? ?? ?? 48 8D 4D ?? E8 ?? ?? ?? ?? 41 8B 4D ??", "EquipMenuDescriptionArrowPos", address =>
+        {
+            _arrowYPos = (float*)memory.Allocate(4);
+            *_arrowYPos = 170;
+            string[] function =
+            {
+                "use64",
+                $"movss xmm2, [qword {(nuint)_arrowYPos}]", // chage position
+            };
+            _hooks.Add(hooks.CreateAsmHook(function, address, AsmHookBehaviour.ExecuteFirst).Activate());
+        });
+
+        Utils.SigScan("E8 ?? ?? ?? ?? 48 63 05 ?? ?? ?? ?? 41 0F 28 D3 F3 41 0F 58 95 ?? ?? ?? ??", "EquipMenuDescriptionArrow2", address =>
+        {
+            // There's a duplicate arrow drawn on the main equip menu
+            memory.SafeWriteRaw((nuint)address, new byte[] { 0x90, 0x90, 0x90, 0x90, 0x90 });
+        });
     }
 
     internal short GetCharacterEquipment(PartyMember character, EquipmentType type)
